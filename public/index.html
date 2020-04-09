@@ -1,0 +1,56 @@
+<html>
+   <head>
+      <title>Verificador de Palíndromo</title>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+   </head>
+   <body>
+      <div class="container" id="app">
+         <template>
+            <button class="button is-small is-pulled-right" data-test="limpar-dados" @click="limparHistorico">Apagar histórico</button>
+            <h1 class="title has-text-centered has-padding-20">{{title}}</h1>
+            <div class="field has-addons">
+               <div class="control is-expanded">
+                  <input class="input" v-model="palavra" data-test="entrada" @keyup.enter="inserirNovoPalindromo(palavra)" placeholder="Insira seu texto" >
+               </div>
+               <div class="control">
+                  <a class="button is-info" @click="inserirNovoPalindromo(palavra)">
+                  Inserir
+                  </a>
+               </div>
+            </div>
+            <div class="box">
+               <strong>Palíndromo</strong>
+               <strong class="is-pulled-right">Frase</strong> 
+            </div>
+            <div v-for="texto in textos" class="box">
+               <strong>{{ texto.palindromo }}</strong>
+               <strong :data-verificado="textos.isPalindromo ? 'positivo' :  'negativo'" class="is-pulled-right">{{ texto.resultado}}</strong> 
+            </div>
+         </template>
+      </div>
+      <script src="script.js"></script>
+   </body>
+</html>
+
+
+<style>
+  .info p {
+    display: inline;
+    font-size: 1.3rem;
+  }
+
+  .result-palind {
+    float: right;
+  }
+
+  .btn-clear {
+    float: right;
+    margin-bottom: 10px;
+  }
+
+  .text-palind {
+    float: right;
+  }
+</style>
